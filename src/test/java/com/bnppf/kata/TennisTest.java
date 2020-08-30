@@ -11,6 +11,7 @@ public class TennisTest {
     public static final String TXT_ALL = " All";
     public static final String FIRST_PLAYER_NAME = "Serena Williams";
     public static final String SECOND_PLAYER_NAME = "Maria Sharapova";
+    public static final int ONE_POINT = 1;
     TennisInterface tennis;
 
     @Before
@@ -38,6 +39,6 @@ public class TennisTest {
     public void firstPlayerScoreShouldIncreaseAfterWinningAPoint() {
         tennis.increaseAPointForFirstPlayer();
 
-        Assert.assertEquals(1 , tennis.getFirstPlayerScore());
+        Assert.assertEquals(ONE_POINT , tennis.getFirstPlayerScore());
     }
 }
