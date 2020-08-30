@@ -33,4 +33,11 @@ public class TennisTest {
     public void initialScoreShouldBeLoveAll() {
         Assert.assertEquals(TXT_LOVE + TXT_ALL , tennis.getScore());
     }
+
+    @Test
+    public void firstPlayerScoreShouldIncreaseAfterWinningAPoint() {
+        tennis.increaseAPointForFirstPlayer();
+
+        Assert.assertEquals(1 , tennis.getFirstPlayerScore());
+    }
 }

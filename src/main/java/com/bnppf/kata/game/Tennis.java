@@ -6,6 +6,7 @@ import com.bnppf.kata.interfaces.TennisInterface;
 public class Tennis implements TennisInterface {
     private String firstPlayerName;
     private String secondPlayerName;
+    private int firstPlayerScore;
 
     public Tennis(String firstPlayerName , String secondPlayerName) {
         this.firstPlayerName = firstPlayerName;
@@ -14,6 +15,16 @@ public class Tennis implements TennisInterface {
 
     public String getFirstPlayerName() {
         return firstPlayerName;
+    }
+
+    @Override
+    public void increaseAPointForFirstPlayer() {
+        firstPlayerScore++;
+    }
+
+    @Override
+    public int getFirstPlayerScore() {
+        return firstPlayerScore;
     }
 
     public String getSecondPlayerName() {
