@@ -1,8 +1,9 @@
 package com.bnppf.kata.game;
 
 import com.bnppf.kata.constants.TennisConstants;
+import com.bnppf.kata.interfaces.TennisInterface;
 
-public class Tennis {
+public class Tennis implements TennisInterface {
     private String firstPlayerName;
     private String secondPlayerName;
 
@@ -20,6 +21,6 @@ public class Tennis {
     }
 
     public String getScore() {
-        return TennisConstants.SCORE_LOVE+TennisConstants.TXT_SPACE+TennisConstants.TXT_ALL;
+        return TennisConstants.SCORE_LOVE + TennisConstants.TXT_SPACE + TennisConstants.TXT_ALL;
     }
 }
