@@ -10,4 +10,8 @@ public interface TennisInterface {
     void increaseAPointForFirstPlayer();
 
     int getFirstPlayerScore();
+
+    void increaseAPointForSecondPlayer();
+
+    int getSecondPlayerScore();
 }
