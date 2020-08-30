@@ -15,6 +15,8 @@ public class TennisTest {
     public static final String FIRST_PLAYER_NAME = "Serena Williams";
     public static final String SECOND_PLAYER_NAME = "Maria Sharapova";
     public static final int ONE_POINT = 1;
+    public static final String TXT_INVALID_PLAYER_NAME = "Invalid Player Name";
+    public static final String TXT_RANDOM_PLAYER = "Random Player";
     TennisInterface tennis;
 
     @Rule
@@ -58,8 +60,8 @@ public class TennisTest {
     @Test
     public void shouldNotAllowInvalidPlayerName() {
         exceptionRule.expect(TennisException.class);
-        exceptionRule.expectMessage("Invalid Player Name");
+        exceptionRule.expectMessage(TXT_INVALID_PLAYER_NAME);
 
-        tennis.increasePlayerScore("Random Player");
+        tennis.increasePlayerScore(TXT_RANDOM_PLAYER);
     }
 }

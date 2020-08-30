@@ -22,7 +22,7 @@ public class Tennis implements TennisInterface {
     @Override
     public void increasePlayerScore(String pointWinnerPlayer) {
         if (!isValidPlayerName(pointWinnerPlayer)) {
-            throw new TennisException("Invalid Player Name");
+            throw new TennisException(TennisConstants.TXT_INVALID_PLAYER);
         }
 
         if (pointWinnerPlayer.equalsIgnoreCase(firstPlayerName)) {
