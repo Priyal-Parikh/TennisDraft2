@@ -6,11 +6,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TennisTest {
+    public static final String TXT_LOVE = "Love";
+    public static final String TXT_ALL = " All";
+    public static final String FIRST_PLAYER_NAME = "Serena Williams";
+    public static final String SECOND_PLAYER_NAME = "Maria Sharapova";
     Tennis tennis;
 
     @Before
     public void initialSetup() {
-        tennis = new Tennis("Serena Williams" , "Maria Sharapova");
+        tennis = new Tennis(FIRST_PLAYER_NAME , SECOND_PLAYER_NAME);
     }
 
     @Test
@@ -20,12 +24,12 @@ public class TennisTest {
 
     @Test
     public void startNewGameWithTwoPlayers() {
-        Assert.assertEquals("Serena Williams" , tennis.getFirstPlayerName());
-        Assert.assertEquals("Maria Sharapova" , tennis.getSecondPlayerName());
+        Assert.assertEquals(FIRST_PLAYER_NAME , tennis.getFirstPlayerName());
+        Assert.assertEquals(SECOND_PLAYER_NAME , tennis.getSecondPlayerName());
     }
 
     @Test
     public void initialScoreShouldBeLoveAll() {
-        Assert.assertEquals("Love All" , tennis.getScore());
+        Assert.assertEquals(TXT_LOVE + TXT_ALL , tennis.getScore());
     }
 }

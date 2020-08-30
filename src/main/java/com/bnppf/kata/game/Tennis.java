@@ -1,5 +1,7 @@
 package com.bnppf.kata.game;
 
+import com.bnppf.kata.constants.TennisConstants;
+
 public class Tennis {
     private String firstPlayerName;
     private String secondPlayerName;
@@ -18,6 +20,6 @@ public class Tennis {
     }
 
     public String getScore() {
-        return "Love All";
+        return TennisConstants.SCORE_LOVE+TennisConstants.TXT_SPACE+TennisConstants.TXT_ALL;
     }
 }
