@@ -21,6 +21,7 @@ public class TennisTest {
     private static final String TXT_DEUCE = "Deuce";
     public static final String TXT_ALL = " All";
     private static final String TXT_ADVANTAGE = "Advantage";
+    private static final String TXT_WINNER = "Winner";
     public static final String COLON = ":";
     public static final String FIRST_PLAYER_NAME = "Serena Williams";
     public static final String SECOND_PLAYER_NAME = "Maria Sharapova";
@@ -155,6 +156,22 @@ public class TennisTest {
         prepareScore(firstPlayerPoints , secondPlayerPoints);
 
         Assert.assertEquals(TXT_ADVANTAGE + COLON + FIRST_PLAYER_NAME , tennis.getScore());
+    }
+
+    @Test
+    @Parameters({
+            "4, 0" ,
+            "4, 2" ,
+            "5, 3" ,
+            "6, 4" ,
+            "8, 6" ,
+            "15, 13" ,
+            "22, 20"
+    })
+    public void shouldReturnFirstPlayerAsWinner(int firstPlayerPoints , int secondPlayerPoints) {
+        prepareScore(firstPlayerPoints , secondPlayerPoints);
+
+        Assert.assertEquals(TXT_WINNER + COLON + FIRST_PLAYER_NAME , tennis.getScore());
     }
 
     private void prepareScore(int firstPlayerPoints , int secondPlayerPoints) {

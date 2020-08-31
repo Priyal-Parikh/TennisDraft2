@@ -7,6 +7,7 @@ public class TennisConstants {
     public static final String SCORE_FORTY = "Forty";
     public static final String SCORE_DEUCE = "Deuce";
     public static final String SCORE_ADVANTAGE = "Advantage";
+    public static final String SCORE_WINNER = "Winner";
 
     public static final String TXT_ALL = "All";
     public static final String TXT_SPACE = " ";
