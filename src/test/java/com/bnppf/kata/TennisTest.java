@@ -142,6 +142,21 @@ public class TennisTest {
         Assert.assertEquals(TXT_ADVANTAGE + COLON + SECOND_PLAYER_NAME , tennis.getScore());
     }
 
+    @Test
+    @Parameters({
+            "4, 3" ,
+            "5, 4" ,
+            "6, 5" ,
+            "7, 6" ,
+            "15, 14" ,
+            "22, 21"
+    })
+    public void checkForAdvantageSituationForFirstPlayer(int firstPlayerPoints , int secondPlayerPoints) {
+        prepareScore(firstPlayerPoints , secondPlayerPoints);
+
+        Assert.assertEquals(TXT_ADVANTAGE + COLON + FIRST_PLAYER_NAME , tennis.getScore());
+    }
+
     private void prepareScore(int firstPlayerPoints , int secondPlayerPoints) {
         for (int counter = 0; counter < firstPlayerPoints; counter++)
             tennis.increasePlayerScore(FIRST_PLAYER_NAME);

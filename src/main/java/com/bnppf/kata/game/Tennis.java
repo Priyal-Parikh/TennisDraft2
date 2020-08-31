@@ -49,7 +49,7 @@ public class Tennis implements TennisInterface {
         if (isDeuce()) {
             score = TennisConstants.SCORE_DEUCE;
         } else if (isAdvantage()) {
-            return TennisConstants.SCORE_ADVANTAGE + TennisConstants.TXT_COLON + secondPlayer.getName();
+            return TennisConstants.SCORE_ADVANTAGE + TennisConstants.TXT_COLON + (firstPlayer.getPoints() > secondPlayer.getPoints() ? firstPlayer.getName() : secondPlayer.getName());
         } else {
             score = formatScore();
         }
