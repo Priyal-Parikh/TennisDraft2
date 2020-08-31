@@ -11,7 +11,9 @@ import org.junit.rules.ExpectedException;
 
 public class TennisTest {
     public static final String TXT_LOVE = "Love";
+    public static final String TXT_FIFTEEN = "Fifteen";
     public static final String TXT_ALL = " All";
+    public static final String COLON = ":";
     public static final String FIRST_PLAYER_NAME = "Serena Williams";
     public static final String SECOND_PLAYER_NAME = "Maria Sharapova";
     public static final int ONE_POINT = 1;
@@ -63,5 +65,13 @@ public class TennisTest {
         exceptionRule.expectMessage(TXT_INVALID_PLAYER_NAME);
 
         tennis.increasePlayerScore(TXT_RANDOM_PLAYER);
+    }
+
+    @Test
+    public void scoreShouldBeLoveFifteenIfSecondPlayerScoresFirstPoint() {
+        tennis.increasePlayerScore(SECOND_PLAYER_NAME);
+        tennis.getScore();
+
+        Assert.assertEquals(TXT_LOVE + COLON + TXT_FIFTEEN , tennis.getScore());
     }
 }

@@ -51,10 +51,32 @@ public class Tennis implements TennisInterface {
     }
 
     public String getScore() {
-        return TennisConstants.SCORE_LOVE + TennisConstants.TXT_SPACE + TennisConstants.TXT_ALL;
+        String score;
+        String firstPlayerTennisScore = getTennisFormatScore(firstPlayerScore);
+        String secondPlayerTennisScore = getTennisFormatScore(secondPlayerScore);
+
+        if (firstPlayerTennisScore.equalsIgnoreCase(secondPlayerTennisScore)) {
+            score = firstPlayerTennisScore + TennisConstants.TXT_SPACE + TennisConstants.TXT_ALL;
+        } else {
+            score = firstPlayerTennisScore + TennisConstants.TXT_COLON + secondPlayerTennisScore;
+        }
+
+        return score;
     }
 
     private boolean isValidPlayerName(String playerName) {
         return null != playerName && !"".equals(playerName) && (playerName.equalsIgnoreCase(firstPlayerName) || playerName.equalsIgnoreCase(secondPlayerName));
+    }
+
+    private String getTennisFormatScore(int points) {
+        String tennisFormatScore = "";
+
+        if (points == TennisConstants.POINT_ZERO) {
+            tennisFormatScore = TennisConstants.SCORE_LOVE;
+        } else if (points == TennisConstants.POINT_ONE) {
+            tennisFormatScore = TennisConstants.SCORE_FIFTEEN;
+        }
+
+        return tennisFormatScore;
     }
 }
