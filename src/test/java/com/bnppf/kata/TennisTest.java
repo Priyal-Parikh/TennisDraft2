@@ -71,16 +71,21 @@ public class TennisTest {
     @Test
     public void scoreShouldBeLoveFifteenIfSecondPlayerScoresFirstPoint() {
         tennis.increasePlayerScore(SECOND_PLAYER_NAME);
-        tennis.getScore();
 
         Assert.assertEquals(TXT_LOVE + COLON + TXT_FIFTEEN , tennis.getScore());
     }
 
     @Test
     public void scoreShouldBeFifteenAllIfBothPlayerScoresFirstPoint() {
-        tennis.increasePlayerScore(FIRST_PLAYER_NAME);
-        tennis.increasePlayerScore(SECOND_PLAYER_NAME);
+        prepareScore(ONE_POINT,ONE_POINT);
 
         Assert.assertEquals(TXT_FIFTEEN + TXT_ALL , tennis.getScore());
+    }
+
+    private void prepareScore(int firstPlayerPoints , int secondPlayerPoints) {
+        for (int counter = 0; counter < firstPlayerPoints; counter++)
+            tennis.increasePlayerScore(FIRST_PLAYER_NAME);
+        for (int counter = 0; counter < secondPlayerPoints; counter++)
+            tennis.increasePlayerScore(SECOND_PLAYER_NAME);
     }
 }
