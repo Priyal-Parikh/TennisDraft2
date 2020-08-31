@@ -174,6 +174,21 @@ public class TennisTest {
         Assert.assertEquals(TXT_WINNER + COLON + FIRST_PLAYER_NAME , tennis.getScore());
     }
 
+    @Test
+    @Parameters({
+            "0, 4" ,
+            "2, 4" ,
+            "3, 5" ,
+            "0, 4" ,
+            "4, 6" ,
+            "20, 22"
+    })
+    public void shouldReturnSecondPlayerAsWinner(int firstPlayerPoints , int secondPlayerPoints) {
+        prepareScore(firstPlayerPoints , secondPlayerPoints);
+
+        Assert.assertEquals(TXT_WINNER + COLON + SECOND_PLAYER_NAME , tennis.getScore());
+    }
+
     private void prepareScore(int firstPlayerPoints , int secondPlayerPoints) {
         for (int counter = 0; counter < firstPlayerPoints; counter++)
             tennis.increasePlayerScore(FIRST_PLAYER_NAME);
