@@ -13,11 +13,13 @@ import org.junit.rules.ExpectedException;
 public class TennisTest {
     public static final String TXT_LOVE = "Love";
     public static final String TXT_FIFTEEN = "Fifteen";
+    public static final String TXT_THIRTY = "Thirty";
     public static final String TXT_ALL = " All";
     public static final String COLON = ":";
     public static final String FIRST_PLAYER_NAME = "Serena Williams";
     public static final String SECOND_PLAYER_NAME = "Maria Sharapova";
     public static final int ONE_POINT = 1;
+    public static final int TWO_POINT = 2;
     public static final String TXT_INVALID_PLAYER_NAME = "Invalid Player Name";
     public static final String TXT_RANDOM_PLAYER = "Random Player";
     TennisInterface tennis;
@@ -77,9 +79,16 @@ public class TennisTest {
 
     @Test
     public void scoreShouldBeFifteenAllIfBothPlayerScoresFirstPoint() {
-        prepareScore(ONE_POINT,ONE_POINT);
+        prepareScore(ONE_POINT , ONE_POINT);
 
         Assert.assertEquals(TXT_FIFTEEN + TXT_ALL , tennis.getScore());
+    }
+
+    @Test
+    public void scoreShouldBeThirtyFifteenIfFirstPlayerScoresTwoAndSecondPlayerScoresOnePoint() {
+        prepareScore(TWO_POINT , ONE_POINT);
+
+        Assert.assertEquals(TXT_THIRTY + COLON + TXT_FIFTEEN , tennis.getScore());
     }
 
     private void prepareScore(int firstPlayerPoints , int secondPlayerPoints) {
