@@ -49,12 +49,16 @@ public class Tennis implements TennisInterface {
         if (isDeuce()) {
             score = TennisConstants.SCORE_DEUCE;
         } else if (isAdvantage()) {
-            return TennisConstants.SCORE_ADVANTAGE + TennisConstants.TXT_COLON + (firstPlayer.getPoints() > secondPlayer.getPoints() ? firstPlayer.getName() : secondPlayer.getName());
+            score = TennisConstants.SCORE_ADVANTAGE + TennisConstants.TXT_COLON + getHighScorer();
         } else {
             score = formatScore();
         }
 
         return score;
+    }
+
+    private String getHighScorer() {
+        return firstPlayer.getPoints() > secondPlayer.getPoints() ? firstPlayer.getName() : secondPlayer.getName();
     }
 
     private boolean isAdvantage() {
