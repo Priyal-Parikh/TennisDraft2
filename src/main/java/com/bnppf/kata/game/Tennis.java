@@ -2,6 +2,7 @@ package com.bnppf.kata.game;
 
 import com.bnppf.kata.constants.TennisConstants;
 import com.bnppf.kata.entities.TennisPlayer;
+import com.bnppf.kata.enums.TennisScoreEnum;
 import com.bnppf.kata.exceptions.TennisException;
 import com.bnppf.kata.interfaces.TennisInterface;
 import org.apache.log4j.Logger;
@@ -44,13 +45,13 @@ public class Tennis implements TennisInterface {
     @Override
     public String getScore() {
         String score;
-        String firstPlayerTennisScore = getTennisFormatScore(firstPlayer.getPoints());
-        String secondPlayerTennisScore = getTennisFormatScore(secondPlayer.getPoints());
+        TennisScoreEnum firstPlayerTennisScore = getTennisFormatScore(firstPlayer.getPoints());
+        TennisScoreEnum secondPlayerTennisScore = getTennisFormatScore(secondPlayer.getPoints());
 
-        if (firstPlayerTennisScore.equalsIgnoreCase(secondPlayerTennisScore)) {
-            score = firstPlayerTennisScore + TennisConstants.TXT_SPACE + TennisConstants.TXT_ALL;
+        if (firstPlayer.getPoints() == secondPlayer.getPoints()) {
+            score = firstPlayerTennisScore.getScore() + TennisConstants.TXT_SPACE + TennisConstants.TXT_ALL;
         } else {
-            score = firstPlayerTennisScore + TennisConstants.TXT_COLON + secondPlayerTennisScore;
+            score = firstPlayerTennisScore.getScore() + TennisConstants.TXT_COLON + secondPlayerTennisScore.getScore();
         }
 
         return score;
@@ -60,19 +61,7 @@ public class Tennis implements TennisInterface {
         return null != playerName && !"".equals(playerName) && (playerName.equalsIgnoreCase(firstPlayer.getName()) || playerName.equalsIgnoreCase(secondPlayer.getName()));
     }
 
-    private String getTennisFormatScore(int points) {
-        String tennisFormatScore = "";
-
-        if (points == TennisConstants.POINT_ZERO) {
-            tennisFormatScore = TennisConstants.SCORE_LOVE;
-        } else if (points == TennisConstants.POINT_ONE) {
-            tennisFormatScore = TennisConstants.SCORE_FIFTEEN;
-        } else if (points == TennisConstants.POINT_TWO) {
-            tennisFormatScore = TennisConstants.SCORE_THIRTY;
-        } else if (points == TennisConstants.THREE_POINT) {
-            tennisFormatScore = TennisConstants.SCORE_FORTY;
-        }
-
-        return tennisFormatScore;
+    private TennisScoreEnum getTennisFormatScore(int points) {
+        return TennisScoreEnum.fromScore(points);
     }
 }
