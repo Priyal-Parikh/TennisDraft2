@@ -1,6 +1,7 @@
 package com.bnppf.kata.game;
 
 import com.bnppf.kata.constants.TennisConstants;
+import com.bnppf.kata.entities.TennisPlayer;
 import com.bnppf.kata.exceptions.TennisException;
 import com.bnppf.kata.interfaces.TennisInterface;
 import org.apache.log4j.Logger;
@@ -8,18 +9,12 @@ import org.apache.log4j.Logger;
 public class Tennis implements TennisInterface {
     private final Logger logger = Logger.getLogger(Tennis.class);
 
-    private String firstPlayerName;
-    private String secondPlayerName;
-    private int firstPlayerScore;
-    private int secondPlayerScore;
+    private TennisPlayer firstPlayer;
+    private TennisPlayer secondPlayer;
 
-    public Tennis(String firstPlayerName , String secondPlayerName) {
-        this.firstPlayerName = firstPlayerName;
-        this.secondPlayerName = secondPlayerName;
-    }
-
-    public String getFirstPlayerName() {
-        return firstPlayerName;
+    public Tennis(TennisPlayer firstPlayer , TennisPlayer secondPlayer) {
+        this.firstPlayer = firstPlayer;
+        this.secondPlayer = secondPlayer;
     }
 
     @Override
@@ -29,31 +24,28 @@ public class Tennis implements TennisInterface {
             throw new TennisException(TennisConstants.TXT_INVALID_PLAYER);
         }
 
-        if (pointWinnerPlayer.equalsIgnoreCase(firstPlayerName)) {
-            firstPlayerScore++;
+        if (pointWinnerPlayer.equalsIgnoreCase(firstPlayer.getName())) {
+            firstPlayer.setPoints(firstPlayer.getPoints() + TennisConstants.POINT_ONE);
         } else {
-            secondPlayerScore++;
+            secondPlayer.setPoints(secondPlayer.getPoints() + TennisConstants.POINT_ONE);
         }
     }
 
     @Override
-    public int getFirstPlayerScore() {
-        return firstPlayerScore;
+    public TennisPlayer getFirstPlayer() {
+        return firstPlayer;
     }
 
     @Override
-    public int getSecondPlayerScore() {
-        return secondPlayerScore;
+    public TennisPlayer getSecondPlayer() {
+        return secondPlayer;
     }
 
-    public String getSecondPlayerName() {
-        return secondPlayerName;
-    }
-
+    @Override
     public String getScore() {
         String score;
-        String firstPlayerTennisScore = getTennisFormatScore(firstPlayerScore);
-        String secondPlayerTennisScore = getTennisFormatScore(secondPlayerScore);
+        String firstPlayerTennisScore = getTennisFormatScore(firstPlayer.getPoints());
+        String secondPlayerTennisScore = getTennisFormatScore(secondPlayer.getPoints());
 
         if (firstPlayerTennisScore.equalsIgnoreCase(secondPlayerTennisScore)) {
             score = firstPlayerTennisScore + TennisConstants.TXT_SPACE + TennisConstants.TXT_ALL;
@@ -65,7 +57,7 @@ public class Tennis implements TennisInterface {
     }
 
     private boolean isValidPlayerName(String playerName) {
-        return null != playerName && !"".equals(playerName) && (playerName.equalsIgnoreCase(firstPlayerName) || playerName.equalsIgnoreCase(secondPlayerName));
+        return null != playerName && !"".equals(playerName) && (playerName.equalsIgnoreCase(firstPlayer.getName()) || playerName.equalsIgnoreCase(secondPlayer.getName()));
     }
 
     private String getTennisFormatScore(int points) {

@@ -1,15 +1,13 @@
 package com.bnppf.kata.interfaces;
 
+import com.bnppf.kata.entities.TennisPlayer;
+
 public interface TennisInterface {
     String getScore();
 
-    String getSecondPlayerName();
-
-    String getFirstPlayerName();
-
     void increasePlayerScore(String pointWinnerPlayer);
 
-    int getFirstPlayerScore();
+    TennisPlayer getFirstPlayer();
 
-    int getSecondPlayerScore();
+    TennisPlayer getSecondPlayer();
 }
