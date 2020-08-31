@@ -48,7 +48,9 @@ public class Tennis implements TennisInterface {
         TennisScoreEnum firstPlayerTennisScore = getTennisFormatScore(firstPlayer.getPoints());
         TennisScoreEnum secondPlayerTennisScore = getTennisFormatScore(secondPlayer.getPoints());
 
-        if (isBothPlayersScoredSame()) {
+        if (isBothPlayersScoredSame() && firstPlayer.getPoints() > TennisConstants.POINT_TWO) {
+            score = TennisConstants.SCORE_DEUCE;
+        } else if (isBothPlayersScoredSame()) {
             score = firstPlayerTennisScore.getScore() + TennisConstants.TXT_SPACE + TennisConstants.TXT_ALL;
         } else {
             score = firstPlayerTennisScore.getScore() + TennisConstants.TXT_COLON + secondPlayerTennisScore.getScore();

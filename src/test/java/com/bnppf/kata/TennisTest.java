@@ -18,6 +18,7 @@ public class TennisTest {
     public static final String TXT_LOVE = "Love";
     public static final String TXT_FIFTEEN = "Fifteen";
     public static final String TXT_THIRTY = "Thirty";
+    private static final String TXT_DEUCE = "Deuce";
     public static final String TXT_ALL = " All";
     public static final String COLON = ":";
     public static final String FIRST_PLAYER_NAME = "Serena Williams";
@@ -110,6 +111,19 @@ public class TennisTest {
         prepareScore(firstPlayerPoints , secondPlayerPoints);
 
         Assert.assertEquals(score , tennis.getScore());
+    }
+
+    @Test
+    @Parameters({
+            "4, 4" ,
+            "5, 5" ,
+            "15, 15" ,
+            "26, 26"
+    })
+    public void checkForDeuceSituationInGame(int firstPlayerPoints , int secondPlayerPoints) {
+        prepareScore(firstPlayerPoints , secondPlayerPoints);
+
+        Assert.assertEquals(TXT_DEUCE , tennis.getScore());
     }
 
     private void prepareScore(int firstPlayerPoints , int secondPlayerPoints) {
