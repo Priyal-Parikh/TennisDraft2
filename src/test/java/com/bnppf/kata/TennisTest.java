@@ -75,4 +75,12 @@ public class TennisTest {
 
         Assert.assertEquals(TXT_LOVE + COLON + TXT_FIFTEEN , tennis.getScore());
     }
+
+    @Test
+    public void scoreShouldBeFifteenAllIfBothPlayerScoresFirstPoint() {
+        tennis.increasePlayerScore(FIRST_PLAYER_NAME);
+        tennis.increasePlayerScore(SECOND_PLAYER_NAME);
+
+        Assert.assertEquals(TXT_FIFTEEN + TXT_ALL , tennis.getScore());
+    }
 }
