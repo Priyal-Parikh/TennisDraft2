@@ -17,7 +17,6 @@ import org.junit.runner.RunWith;
 public class TennisTest {
     public static final String TXT_LOVE = "Love";
     public static final String TXT_FIFTEEN = "Fifteen";
-    public static final String TXT_THIRTY = "Thirty";
     private static final String TXT_DEUCE = "Deuce";
     public static final String TXT_ALL = " All";
     private static final String TXT_ADVANTAGE = "Advantage";
@@ -26,7 +25,6 @@ public class TennisTest {
     public static final String FIRST_PLAYER_NAME = "Serena Williams";
     public static final String SECOND_PLAYER_NAME = "Maria Sharapova";
     public static final int ONE_POINT = 1;
-    public static final int TWO_POINT = 2;
     public static final String TXT_INVALID_PLAYER_NAME = "Invalid Player Name";
     public static final String TXT_RANDOM_PLAYER = "Random Player";
     TennisInterface tennis;
