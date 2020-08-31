@@ -1,6 +1,5 @@
 package com.bnppf.kata;
 
-import com.bnppf.kata.constants.TennisConstants;
 import com.bnppf.kata.entities.TennisPlayer;
 import com.bnppf.kata.exceptions.TennisException;
 import com.bnppf.kata.game.Tennis;
@@ -16,23 +15,7 @@ public class TennisSimulator {
 
     public static void main(String[] args) {
         TennisInterface tennis = startGameWithTwoPlayers();
-        System.out.println("Start New Game!");
-
-        while (!tennis.getScore().contains("Winner")) {
-            System.out.print("Enter point winning player:");
-            String pointScoredByPlayer = scanner.nextLine();
-            try {
-                tennis.increasePlayerScore(pointScoredByPlayer);
-            } catch (TennisException e) {
-                logger.error(TennisConstants.TXT_INVALID_PLAYER + e.getMessage());
-                System.out.println("Exception occurred: " + e.getMessage());
-            }
-            System.out.println("*****************************************************");
-            System.out.println(" " + tennis.getScore());
-            System.out.println("*****************************************************");
-        }
-
-        System.out.println("Game over!");
+        playGame(tennis);
         scanner.close();
     }
 
@@ -52,5 +35,32 @@ public class TennisSimulator {
         } while ("".equals(firstPlayer) || "".equals(secondPlayer) || firstPlayer.equalsIgnoreCase(secondPlayer));
 
         return new Tennis(new TennisPlayer(firstPlayer) , new TennisPlayer(secondPlayer));
+    }
+
+    private static void playGame(TennisInterface tennis) {
+        System.out.println("\n Start New Game!");
+
+        try {
+            while (!tennis.getScore().contains("Winner")) {
+                System.out.print("Enter point winning player:");
+                String pointScoredByPlayer = scanner.nextLine();
+                try {
+                    tennis.increasePlayerScore(pointScoredByPlayer);
+                } catch (TennisException e) {
+                    logger.error(e.getMessage());
+                }
+                printScoreBoard(tennis);
+            }
+        } catch (TennisException e) {
+            logger.error(e.getMessage());
+        }
+
+        System.out.println("Game over!");
+    }
+
+    private static void printScoreBoard(TennisInterface tennis) {
+        System.out.println("#####################################################");
+        System.out.println(" " + tennis.getScore());
+        System.out.println("#####################################################");
     }
 }
