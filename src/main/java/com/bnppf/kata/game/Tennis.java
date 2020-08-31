@@ -48,13 +48,25 @@ public class Tennis implements TennisInterface {
 
         if (isDeuce()) {
             score = TennisConstants.SCORE_DEUCE;
-        } else if (secondPlayer.getPoints() - firstPlayer.getPoints() == TennisConstants.POINT_ONE && (secondPlayer.getPoints() > TennisConstants.POINT_THREE || firstPlayer.getPoints() > TennisConstants.POINT_THREE)) {
+        } else if (isAdvantage()) {
             return TennisConstants.SCORE_ADVANTAGE + TennisConstants.TXT_COLON + secondPlayer.getName();
         } else {
             score = formatScore();
         }
 
         return score;
+    }
+
+    private boolean isAdvantage() {
+        return pointDifference() == TennisConstants.POINT_ONE && isAnyPlayerBeyondForty();
+    }
+
+    private int pointDifference() {
+        return Math.abs(secondPlayer.getPoints() - firstPlayer.getPoints());
+    }
+
+    private boolean isAnyPlayerBeyondForty() {
+        return secondPlayer.getPoints() > TennisConstants.POINT_THREE || firstPlayer.getPoints() > TennisConstants.POINT_THREE;
     }
 
     private String formatScore() {
