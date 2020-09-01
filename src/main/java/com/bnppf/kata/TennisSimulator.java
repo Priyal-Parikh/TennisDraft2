@@ -38,7 +38,7 @@ public class TennisSimulator {
     }
 
     private static void playGame(TennisInterface tennis) {
-        System.out.println("\n Start New Game!");
+        System.out.println("\n Start New Game! \n");
 
         try {
             while (!tennis.getScore().contains("Winner")) {
@@ -47,15 +47,15 @@ public class TennisSimulator {
                 try {
                     tennis.increasePlayerScore(pointScoredByPlayer);
                 } catch (TennisException e) {
-                    logger.error(e.getMessage());
+                    System.out.println("Exception occurred:" + e.getMessage());
                 }
                 printScoreBoard(tennis);
             }
         } catch (TennisException e) {
-            logger.error(e.getMessage());
+            System.out.println("Exception occurred:" + e.getMessage());
         }
 
-        System.out.println("Game over!");
+        System.out.println("\n Game over!");
     }
 
     private static void printScoreBoard(TennisInterface tennis) {
