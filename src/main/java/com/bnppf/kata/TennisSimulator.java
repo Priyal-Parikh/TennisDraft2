@@ -4,14 +4,12 @@ import com.bnppf.kata.entities.TennisPlayer;
 import com.bnppf.kata.exceptions.TennisException;
 import com.bnppf.kata.game.Tennis;
 import com.bnppf.kata.interfaces.TennisInterface;
-import org.apache.log4j.Logger;
 
 import java.util.Scanner;
 
 public class TennisSimulator {
 
     private static final Scanner scanner = new Scanner(System.in);
-    private static final Logger logger = Logger.getLogger(TennisSimulator.class);
 
     public static void main(String[] args) {
         TennisInterface tennis = startGameWithTwoPlayers();

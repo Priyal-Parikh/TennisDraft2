@@ -20,6 +20,7 @@ public class Tennis implements TennisInterface {
 
     @Override
     public void increasePlayerScore(String pointWinnerPlayer) {
+        logger.info("Entry : increasePlayerScore ");
         if (!isValidPlayerName(pointWinnerPlayer)) {
             logger.error(TennisConstants.TXT_INVALID_PLAYER);
             throw new TennisException(TennisConstants.TXT_INVALID_PLAYER);
@@ -30,6 +31,7 @@ public class Tennis implements TennisInterface {
         } else {
             secondPlayer.setPoints(secondPlayer.getPoints() + TennisConstants.POINT_ONE);
         }
+        logger.info("Exit : increasePlayerScore ");
     }
 
     @Override
@@ -44,6 +46,7 @@ public class Tennis implements TennisInterface {
 
     @Override
     public String getScore() {
+        logger.info("Entry: getScore()");
         String score;
 
         if (isDeuce()) {
@@ -55,7 +58,8 @@ public class Tennis implements TennisInterface {
         } else {
             score = formatScore();
         }
-
+        logger.info("Fetched score: "+score);
+        logger.info("Exit: getScore()");
         return score;
     }
 
